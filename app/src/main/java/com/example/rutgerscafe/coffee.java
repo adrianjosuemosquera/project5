@@ -3,8 +3,8 @@ package com.example.rutgerscafe;
 public class coffee {
 
     public static double price = 0;
-    private String cupSize;
-    private String addIns;
+    public static String cupSize;
+    public static String addIns;
 
     public coffee(String cupSize, String addIns, double price) {
 

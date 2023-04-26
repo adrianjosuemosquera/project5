@@ -126,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/largeButtonName"
-            android:translationX="130dp"
+            android:translationX="250dp"
             android:visibility="visible"
             app:layout_constraintBottom_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="@id/orderViewListView"
@@ -149,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:text="@string/mediumButtonName"
-            android:translationX="250dp"
+            android:translationX="130dp"
             android:translationY="-96dp"
             app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
             app:layout_constraintEnd_toStartOf="@+id/largeButton"
@@ -157,6 +157,18 @@
             app:layout_constraintTop_toBottomOf="@+id/frenchVanillaCheckBox" />
 
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="69dp"
+        android:text="@string/instructions_for_coffee"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

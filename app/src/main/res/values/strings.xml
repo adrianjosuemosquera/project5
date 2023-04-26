@@ -24,5 +24,6 @@
     <string name = "totalTextBoxName">Total</string>
     <string name = "taxTextBoxName">Sales Tax</string>
 
+    <string name = "instructions_for_coffee">Please select a size, then select any syrups!</string>
 
 </resources>
