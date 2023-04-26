@@ -27,9 +27,9 @@ public class DonutController extends AppCompatActivity {
         ArrayAdapter<String> adapter_flavor = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         ArrayAdapter<String> adapter_quantity = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
 
-        adapter_type.addAll("Yeast Donut ($1.59)","Cake Donut($1.79)", "Donut Holes($0.39)");
-        adapter_flavor.addAll("Plain", "Chocolate", "White Chocolate", "Strawberry", "Glazed", "Boston Cream");
-        adapter_quantity.addAll("One","Two", "Four", "Half Dozen", "Eight", "Dozen");
+        adapter_type.addAll(" ", "Yeast Donut ($1.59)","Cake Donut($1.79)", "Donut Holes($0.39)");
+        adapter_flavor.addAll(" ", "Plain", "Chocolate", "White Chocolate", "Strawberry", "Glazed", "Boston Cream");
+        adapter_quantity.addAll(" ", "One","Two", "Four", "Half Dozen", "Eight", "Dozen");
 
         donut_type.setAdapter(adapter_type);
         donut_flavor.setAdapter(adapter_flavor);
