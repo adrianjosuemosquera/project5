@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -26,6 +27,7 @@ public class basketController extends AppCompatActivity {
     DecimalFormat moneyFormat = new DecimalFormat("#.##");
 
     EditText subtotalTextBox, totalTextBox, taxTextbox;
+    Button placeOrder;
 
 
     private double costRemoved = 0;
@@ -50,6 +52,7 @@ public class basketController extends AppCompatActivity {
         ListView orderList = (ListView) findViewById(R.id.orderViewListView);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, order);
 
+        placeOrder = (Button) findViewById(R.id.placeOrderButton);
 
         subtotalTextBox.setText("$" +moneyFormat.format(subtotal) + "");
 
@@ -96,7 +99,12 @@ public class basketController extends AppCompatActivity {
             }
         });
 
+    placeOrder.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
 
+        }
+    });
 
 
     }
