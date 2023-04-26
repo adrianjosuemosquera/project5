@@ -1,5 +1,7 @@
 package com.example.rutgerscafe;
 
+import static com.example.rutgerscafe.basketController.order;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -128,7 +130,7 @@ public class DonutController extends AppCompatActivity {
         donut_subtotal=findViewById(R.id.donut_price);
         donut_subtotal.setText(decimalFormat.format(getPrice()));
         Toast.makeText(this, quantity + " "+ flavor + " "+ type + " has been added to your order", Toast.LENGTH_LONG).show();
-
+        order.add(flavor+ " "+ type+ " x"+quantity);
     }
 
     private void alert(String title, String msg){
