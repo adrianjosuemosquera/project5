@@ -1,19 +1,30 @@
 package com.example.rutgerscafe;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
 public class basketController extends AppCompatActivity {
 
-    int subtotal = 0;
-    int total = 0;
-    int salesTax = 0;
+    public static double subtotal = 0;
+    public double total = 0;
+    public double salesTax = 0;
+    DecimalFormat moneyFormat = new DecimalFormat("#.##");
+
+    EditText subtotalTextBox, totalTextBox, taxTextbox;
+
+    private static double TAX_AMOUNT = 0.07;
     private ArrayAdapter<String> adapter;
 
 
@@ -23,10 +34,43 @@ public class basketController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basket_view);
 
+        subtotalTextBox = (EditText) findViewById(R.id.subTotalOrderTextBox);
+        taxTextbox = (EditText) findViewById(R.id.salesTaxOrderTextBox);
+        totalTextBox = (EditText) findViewById(R.id.totalOrderTextBox);
+
         ListView orderList = (ListView) findViewById(R.id.orderViewListView);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, order);
 
+
+        subtotalTextBox.setText("$" +moneyFormat.format(subtotal) + "");
+
+        salesTax = subtotal * TAX_AMOUNT;
+        total = subtotal + salesTax;
+
+        totalTextBox.setText("$" + moneyFormat.format(total) + "");
+        taxTextbox.setText("$" +moneyFormat.format(salesTax) + "");
+
+
         orderList.setAdapter(adapter);
+
+        orderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder adb = new AlertDialog.Builder(basketController.this);
+                adb.setTitle("Delete?");
+                adb.setMessage("Are you sure you want to delete " + position);
+                final int positionToRemove = position;
+                adb.setNegativeButton("Cancel", null);
+                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        order.remove(positionToRemove);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                adb.show();
+            }
+        });
+
 
     }
 
