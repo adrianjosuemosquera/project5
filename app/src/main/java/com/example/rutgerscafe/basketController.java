@@ -24,6 +24,9 @@ public class basketController extends AppCompatActivity {
 
     EditText subtotalTextBox, totalTextBox, taxTextbox;
 
+
+    private double costRemoved = 0;
+
     private static double TAX_AMOUNT = 0.07;
     private ArrayAdapter<String> adapter;
 
@@ -63,8 +66,24 @@ public class basketController extends AppCompatActivity {
                 adb.setNegativeButton("Cancel", null);
                 adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        String removedItem = order.get(positionToRemove);
                         order.remove(positionToRemove);
+
+                        String cleanedItem = removedItem.replaceAll("\\D+", "");
+                        costRemoved = (Double.parseDouble(cleanedItem)) * .01;
+
+
+                        subtotal = subtotal - costRemoved;
+                        salesTax = subtotal * TAX_AMOUNT;
+                        total = subtotal + salesTax;
+
+                        subtotalTextBox.setText("$" +moneyFormat.format(subtotal) + "");
+                        totalTextBox.setText("$" + moneyFormat.format(total) + "");
+                        taxTextbox.setText("$" +moneyFormat.format(salesTax) + "");
+
                         adapter.notifyDataSetChanged();
+
+
                     }
                 });
                 adb.show();
