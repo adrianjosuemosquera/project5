@@ -28,6 +28,10 @@
             android:name=".basketController"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".DonutController"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
