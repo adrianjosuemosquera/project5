@@ -1,5 +1,7 @@
 package com.example.rutgerscafe;
 
+import static com.example.rutgerscafe.basketController.order;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -7,8 +9,10 @@ import android.widget.*;
 import android.view.View;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import java.text.DecimalFormat;
 
 public class DonutController extends AppCompatActivity {
+    private static final double hole_price = 0.39, cake_price = 1.79, yeast_price = 1.59;
     private String type, flavor, quantity;
     private Spinner donut_type, donut_flavor, donut_quantity;
     private TextView donut_subtotal;
@@ -18,7 +22,9 @@ public class DonutController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donut_view);
         addItems();
+        getValues();
     }
+
     public void addItems(){
         donut_type = findViewById(R.id.donut_type);
         donut_flavor = findViewById(R.id.donut_flavor);
@@ -27,7 +33,7 @@ public class DonutController extends AppCompatActivity {
         ArrayAdapter<String> adapter_flavor = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
         ArrayAdapter<String> adapter_quantity = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item);
 
-        adapter_type.addAll(" ", "Yeast Donut ($1.59)","Cake Donut($1.79)", "Donut Holes($0.39)");
+        adapter_type.addAll(" ", "Yeast Donut($1.59)","Cake Donut($1.79)", "Donut Holes($0.39)");
         adapter_flavor.addAll(" ", "Plain", "Chocolate", "White Chocolate", "Strawberry", "Glazed", "Boston Cream");
         adapter_quantity.addAll(" ", "One","Two", "Four", "Half Dozen", "Eight", "Dozen");
 
@@ -65,12 +71,12 @@ public class DonutController extends AppCompatActivity {
         double price = 0.0;
         if(flavor.compareTo(" ")!=0 && type.compareTo(" ")!=0 && quantity.compareTo(" ")!=0){
             int quant = getDonutQuant();
-            if(type.compareTo("Yeast Donut ($1.59)")==0){
-                price = 1.59*quant;
+            if(type.compareTo("Yeast Donut($1.59)")==0){
+                price = yeast_price*quant;
             }else if(type.compareTo("Cake Donut($1.79)")==0){
-                price = 1.79*quant;
+                price = cake_price*quant;
             }else if(type.compareTo("Donut Holes($0.39)")==0){
-                price = 0.39*quant;
+                price = hole_price*quant;
             }
         }
 
@@ -107,26 +113,24 @@ public class DonutController extends AppCompatActivity {
             return;}
         if(type.compareTo(" ")==0){
             alert("Type not selected", "Please select the type of donut to order");
-            return;
-        }
+            return;}
         if(flavor==null){
             alert("Flavor not selected", "Please select the flavor for the donut");
-            return;
-        }
+            return;}
         if(flavor.compareTo(" ")==0||flavor==null){
             alert("Flavor not selected", "Please select the flavor for the donut");
-            return;
-        }
+            return;}
         if(quantity==null){
             alert("Quantity not selected", "Please select the numbers of donuts you want to order");
             return;}
         if(quantity.compareTo(" ")==0||quantity==null){
             alert("Quantity not selected", "Please select the numbers of donuts you want to order");
-            return;
-        }
+            return;}
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
         donut_subtotal=findViewById(R.id.donut_price);
-        donut_subtotal.setText(Double.toString(getPrice()));
-        Toast.makeText(this, "Order Added", Toast.LENGTH_LONG).show();
+        donut_subtotal.setText(decimalFormat.format(getPrice()));
+        Toast.makeText(this, quantity + " "+ flavor + " "+ type + " has been added to your order", Toast.LENGTH_LONG).show();
+        order.add(flavor+ " "+ type+ " x"+quantity);
     }
 
     private void alert(String title, String msg){
