@@ -1,6 +1,7 @@
 package com.example.rutgerscafe;
 
 import static com.example.rutgerscafe.basketController.order;
+import static com.example.rutgerscafe.basketController.subtotal;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
@@ -73,12 +74,15 @@ public class DonutController extends AppCompatActivity {
             int quant = getDonutQuant();
             if(type.compareTo("Yeast Donut($1.59)")==0){
                 price = yeast_price*quant;
+                subtotal += price;
                 type = "Yeast Donut";
             }else if(type.compareTo("Cake Donut($1.79)")==0){
                 price = cake_price*quant;
+                subtotal += price;
                 type = "Cake Donut";
             }else if(type.compareTo("Donut Holes($0.39)")==0){
                 price = hole_price*quant;
+                subtotal += price;
                 type = "Donut Holes";
             }
         }
