@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="24dp"
+        android:clickable="false"
         android:text="@string/sweetCreamCheckBoxName"
         app:layout_constraintBottom_toTopOf="@+id/mochaCheckBox"
         app:layout_constraintStart_toStartOf="parent" />
@@ -22,6 +23,7 @@
         android:layout_marginStart="27dp"
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="24dp"
+        android:clickable="false"
         android:text="@string/irishCreamCheckBoxName"
         app:layout_constraintBottom_toTopOf="@+id/frenchVanillaCheckBox"
         app:layout_constraintEnd_toStartOf="@+id/caramelCheckBox"
@@ -34,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginBottom="260dp"
+        android:clickable="false"
         android:text="@string/mochaCheckBoxName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -44,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="332dp"
+        android:clickable="false"
         android:text="@string/caramelCheckBoxName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -54,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginBottom="260dp"
+        android:clickable="false"
         android:text="@string/frenchVanillaCheckBoxName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/mochaCheckBox" />
@@ -63,15 +68,19 @@
         android:layout_width="360dp"
         android:layout_height="55dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="32dp"
+        android:autoText="false"
+        android:backgroundTint="#A1AAA8A8"
+        android:editable="false"
+        android:inputType="none"
         android:ems="10"
         android:text="@string/priceTextBoxName"
-        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mochaCheckBox"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="Deprecated,SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/addToOrderButton"
@@ -85,43 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <RadioButton
-        android:id="@+id/smallButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/smallButtonName"
-        app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mochaCheckBox" />
 
-    <RadioButton
-        android:id="@+id/mediumButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/mediumButtonName"
-        app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
-        app:layout_constraintEnd_toStartOf="@+id/largeButton"
-        app:layout_constraintStart_toEndOf="@+id/smallButton"
-        app:layout_constraintTop_toBottomOf="@+id/frenchVanillaCheckBox" />
-
-    <RadioButton
-        android:id="@+id/largeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/largeButtonName"
-        app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frenchVanillaCheckBox" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -136,5 +109,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/roasted_coffee_beans" />
+
+    <RadioGroup
+        android:id="@+id/coffeeSizes"
+        android:layout_width="349dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/largeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/largeButtonName"
+            android:translationX="130dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/orderViewListView"
+            app:layout_constraintTop_toBottomOf="@id/mediumButton" />
+
+        <RadioButton
+            android:id="@+id/smallButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:checked="false"
+            android:minHeight="48dp"
+            android:text="@string/smallButtonName"
+            android:translationY="-48dp"
+            app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mochaCheckBox" />
+
+        <RadioButton
+            android:id="@+id/mediumButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/mediumButtonName"
+            android:translationX="250dp"
+            android:translationY="-96dp"
+            app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
+            app:layout_constraintEnd_toStartOf="@+id/largeButton"
+            app:layout_constraintStart_toEndOf="@+id/smallButton"
+            app:layout_constraintTop_toBottomOf="@+id/frenchVanillaCheckBox" />
+
+    </RadioGroup>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

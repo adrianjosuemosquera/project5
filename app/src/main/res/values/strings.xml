@@ -18,4 +18,11 @@
     <string name = "priceTextBoxName">Price</string>
     <string name = "addToOrderButtonName">Add to Order</string>
 
+
+    <string name = "placeOrderButtonName">Place Order</string>
+    <string name = "subTotalTextBoxName">Subtotal</string>
+    <string name = "totalTextBoxName">Total</string>
+    <string name = "taxTextBoxName">Sales Tax</string>
+
+
 </resources>
