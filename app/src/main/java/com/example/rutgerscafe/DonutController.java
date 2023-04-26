@@ -73,10 +73,13 @@ public class DonutController extends AppCompatActivity {
             int quant = getDonutQuant();
             if(type.compareTo("Yeast Donut($1.59)")==0){
                 price = yeast_price*quant;
+                type = "Yeast Donut";
             }else if(type.compareTo("Cake Donut($1.79)")==0){
                 price = cake_price*quant;
+                type = "Cake Donut";
             }else if(type.compareTo("Donut Holes($0.39)")==0){
                 price = hole_price*quant;
+                type = "Donut Holes";
             }
         }
 
@@ -128,9 +131,10 @@ public class DonutController extends AppCompatActivity {
             return;}
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         donut_subtotal=findViewById(R.id.donut_price);
-        donut_subtotal.setText(decimalFormat.format(getPrice()));
+        String subtotal = decimalFormat.format(getPrice());
+        donut_subtotal.setText(subtotal);
         Toast.makeText(this, quantity + " "+ flavor + " "+ type + " has been added to your order", Toast.LENGTH_LONG).show();
-        order.add(flavor+ " "+ type+ " x"+quantity);
+        order.add(quantity + " " + flavor + " " + type + " $" + subtotal);
     }
 
     private void alert(String title, String msg){

@@ -1,5 +1,8 @@
 package com.example.rutgerscafe;
 
+//import static com.example.rutgerscafe.StoreOrderController.StoreOrderList;
+//import static com.example.rutgerscafe.StoreOrderController.total_amount;
+
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +36,9 @@ public class basketController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basket_view);
+
+        //StoreOrderList.add(order);
+        //total_amount.add(2.00);
 
         subtotalTextBox = (EditText) findViewById(R.id.subTotalOrderTextBox);
         taxTextbox = (EditText) findViewById(R.id.salesTaxOrderTextBox);
@@ -70,8 +76,6 @@ public class basketController extends AppCompatActivity {
                 adb.show();
             }
         });
-
-
     }
 
 }
