@@ -1,10 +1,14 @@
 package com.example.rutgerscafe;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
@@ -48,6 +52,25 @@ public class basketController extends AppCompatActivity {
 
 
         orderList.setAdapter(adapter);
+
+        orderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder adb = new AlertDialog.Builder(basketController.this);
+                adb.setTitle("Delete?");
+                adb.setMessage("Are you sure you want to delete " + position);
+                final int positionToRemove = position;
+                adb.setNegativeButton("Cancel", null);
+                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        order.remove(positionToRemove);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                adb.show();
+            }
+        });
+
 
     }
 
