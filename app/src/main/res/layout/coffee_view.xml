@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <CheckBox
+        android:id="@+id/sweetCreamBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/sweetCreamCheckBoxName"
+        app:layout_constraintBottom_toTopOf="@+id/mochaCheckBox"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/irishCreamCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/irishCreamCheckBoxName"
+        app:layout_constraintBottom_toTopOf="@+id/frenchVanillaCheckBox"
+        app:layout_constraintEnd_toStartOf="@+id/caramelCheckBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/sweetCreamBox" />
+
+    <CheckBox
+        android:id="@+id/mochaCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="260dp"
+        android:text="@string/mochaCheckBoxName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/caramelCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="332dp"
+        android:text="@string/caramelCheckBoxName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <CheckBox
+        android:id="@+id/frenchVanillaCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="260dp"
+        android:text="@string/frenchVanillaCheckBoxName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mochaCheckBox" />
+
+    <EditText
+        android:id="@+id/subtotalTextBox"
+        android:layout_width="360dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:text="@string/priceTextBoxName"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mochaCheckBox"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/addToOrderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="157dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/addToOrderButtonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioButton
+        android:id="@+id/smallButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/smallButtonName"
+        app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mochaCheckBox" />
+
+    <RadioButton
+        android:id="@+id/mediumButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/mediumButtonName"
+        app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
+        app:layout_constraintEnd_toStartOf="@+id/largeButton"
+        app:layout_constraintStart_toEndOf="@+id/smallButton"
+        app:layout_constraintTop_toBottomOf="@+id/frenchVanillaCheckBox" />
+
+    <RadioButton
+        android:id="@+id/largeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/largeButtonName"
+        app:layout_constraintBottom_toTopOf="@+id/subtotalTextBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frenchVanillaCheckBox" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="321dp"
+        android:layout_height="245dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="63dp"
+        app:layout_constraintBottom_toTopOf="@+id/sweetCreamBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/roasted_coffee_beans" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

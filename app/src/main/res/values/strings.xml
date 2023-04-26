@@ -4,4 +4,18 @@
     <string name = "donutButtonName">Donuts</string>
     <string name = "storeOrderButtonName">Store Orders</string>
     <string name = "checkCartButtonName">Check Cart</string>
+
+    <string name = "sweetCreamCheckBoxName">Sweet Cream</string>
+    <string name = "frenchVanillaCheckBoxName">French Vanilla</string>
+    <string name = "irishCreamCheckBoxName">Irish Cream</string>
+    <string name = "caramelCheckBoxName">Caramel</string>
+    <string name = "mochaCheckBoxName">Mocha</string>
+
+    <string name = "smallButtonName">Tall</string>
+    <string name = "mediumButtonName">Grande</string>
+    <string name = "largeButtonName">Venti</string>
+
+    <string name = "priceTextBoxName">Price</string>
+    <string name = "addToOrderButtonName">Add to Order</string>
+
 </resources>
