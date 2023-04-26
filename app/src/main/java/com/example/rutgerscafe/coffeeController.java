@@ -1,6 +1,7 @@
 package com.example.rutgerscafe;
 
 import static com.example.rutgerscafe.basketController.order;
+import static com.example.rutgerscafe.basketController.subtotal;
 
 import android.os.Bundle;
 import android.content.Intent;
@@ -267,7 +268,27 @@ public class coffeeController extends AppCompatActivity {
         addToOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                order.add(coffee.cupSize + " " + coffee.addIns + " Coffee" + "   " + coffee.price);
+
+                mocha.setChecked(false);
+                frenchVanilla.setChecked(false);
+                caramel.setChecked(false);
+                sweetCream.setChecked(false);
+                irishCream.setChecked(false);
+
+                venti.setChecked(false);
+                grande.setChecked(false);
+                tall.setChecked(false);
+
+                mocha.setClickable(false);
+                frenchVanilla.setClickable(false);
+                caramel.setClickable(false);
+                sweetCream.setClickable(false);
+                irishCream.setClickable(false);
+
+                price.setText("Price");
+
+                subtotal += coffee.price;
+                order.add(coffee.cupSize + " " + coffee.addIns + " Coffee" + "   " + "$" +coffee.price);
             }
         });
 
