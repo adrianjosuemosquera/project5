@@ -1,5 +1,7 @@
 package com.example.rutgerscafe;
 
+import static com.example.rutgerscafe.basketController.order;
+
 import android.os.Bundle;
 import android.content.Intent;
 import android.util.Log;
@@ -18,6 +20,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DecimalFormat;
 
 public class coffeeController extends AppCompatActivity {
+
+    String Mocha = "Mocha";
+    String SweetCream = "Sweet Cream";
+    String FrenchVanilla = "French Vanilla";
+    String Caramel = "Caramel";
+    String IrishCream = "Irish Cream";
+
 
     DecimalFormat moneyFormat = new DecimalFormat("#.##");
     CheckBox sweetCream, irishCream, caramel, mocha, frenchVanilla;
@@ -51,6 +60,15 @@ public class coffeeController extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+
+                    mocha.setChecked(false);
+                    frenchVanilla.setChecked(false);
+                    caramel.setChecked(false);
+                    sweetCream.setChecked(false);
+
+                    coffee.addIns = IrishCream;
+
+
                     coffee.price += .30;
                     price.setText(moneyFormat.format(coffee.price) + "");
                 }
@@ -69,6 +87,15 @@ public class coffeeController extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+
+                    mocha.setChecked(false);
+                    caramel.setChecked(false);
+                    sweetCream.setChecked(false);
+                    irishCream.setChecked(false);
+
+                    coffee.addIns = FrenchVanilla;
+
+
                     coffee.price += .30;
                     price.setText(moneyFormat.format(coffee.price) + "");
                 }
@@ -87,6 +114,15 @@ public class coffeeController extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+
+                    mocha.setChecked(false);
+                    frenchVanilla.setChecked(false);
+                    sweetCream.setChecked(false);
+                    irishCream.setChecked(false);
+
+                    coffee.addIns = Caramel;
+
+
                     coffee.price += .30;
                     price.setText(moneyFormat.format(coffee.price) + "");
                 }
@@ -105,6 +141,15 @@ public class coffeeController extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+
+                    mocha.setChecked(false);
+                    frenchVanilla.setChecked(false);
+                    caramel.setChecked(false);
+                    irishCream.setChecked(false);
+
+                    coffee.addIns = SweetCream;
+
+
                     coffee.price += .30;
                     price.setText(moneyFormat.format(coffee.price) + "");
                 }
@@ -123,10 +168,20 @@ public class coffeeController extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+
+                    frenchVanilla.setChecked(false);
+                    caramel.setChecked(false);
+                    sweetCream.setChecked(false);
+                    irishCream.setChecked(false);
+
+                    coffee.addIns = Mocha;
+
                     coffee.price += .30;
                     price.setText(moneyFormat.format(coffee.price) + "");
                 }
                 if(!isChecked) {
+
+
                     coffee.price -= .30;
                     price.setText(moneyFormat.format(coffee.price) + "");
                 }
@@ -137,6 +192,9 @@ public class coffeeController extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
+
+                    coffee.cupSize = "Tall";
+
                     mocha.setChecked(false);
                     frenchVanilla.setChecked(false);
                     caramel.setChecked(false);
@@ -160,6 +218,9 @@ public class coffeeController extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
                     if(isChecked) {
+
+                        coffee.cupSize = "Grande";
+
                         mocha.setChecked(false);
                         frenchVanilla.setChecked(false);
                         caramel.setChecked(false);
@@ -182,6 +243,9 @@ public class coffeeController extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+
+                    coffee.cupSize = "Venti";
+
                     mocha.setChecked(false);
                     frenchVanilla.setChecked(false);
                     caramel.setChecked(false);
@@ -200,13 +264,13 @@ public class coffeeController extends AppCompatActivity {
             }
         });
 
-
-
-
-
+        addToOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                order.add(coffee.cupSize + " " + coffee.addIns + " Coffee" + "   " + coffee.price);
+            }
+        });
 
     }
-
-
 
 }
