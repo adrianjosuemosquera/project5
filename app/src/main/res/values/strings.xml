@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Rutgers Cafe</string>
+    <string name = "coffeeButtonName">Coffee</string>
+    <string name = "donutButtonName">Donuts</string>
+    <string name = "storeOrderButtonName">Store Orders</string>
+    <string name = "checkCartButtonName">Check Cart</string>
 </resources>
