@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity{
-    Button coffeeButton, checkCartButton, donutButton;
+    Button coffeeButton, checkCartButton, donutButton, storeOrderButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity{
         coffeeButton = (Button) findViewById(R.id.coffeeButton);
         checkCartButton = (Button) findViewById(R.id.checkCartButton);
         donutButton = (Button) findViewById(R.id.donutButton);
+        storeOrderButton = (Button) findViewById(R.id.storeOrderButton);
 
         coffeeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +39,13 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View V) {
                 Intent i = new Intent(getApplicationContext(), DonutController.class);
+                startActivity(i);
+            }
+        });
+        storeOrderButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View V) {
+                Intent i = new Intent(getApplicationContext(), StoreOrderController.class);
                 startActivity(i);
             }
         });
