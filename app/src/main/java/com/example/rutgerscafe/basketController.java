@@ -1,7 +1,7 @@
 package com.example.rutgerscafe;
 
-//import static com.example.rutgerscafe.StoreOrderController.StoreOrderList;
-//import static com.example.rutgerscafe.StoreOrderController.total_amount;
+import static com.example.rutgerscafe.StoreOrderController.StoreOrderList;
+import static com.example.rutgerscafe.StoreOrderController.total_amount;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,9 +43,6 @@ public class basketController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basket_view);
 
-        //StoreOrderList.add(order);
-        //total_amount.add(2.00);
-
         subtotalTextBox = (EditText) findViewById(R.id.subTotalOrderTextBox);
         taxTextbox = (EditText) findViewById(R.id.salesTaxOrderTextBox);
         totalTextBox = (EditText) findViewById(R.id.totalOrderTextBox);
@@ -54,13 +52,13 @@ public class basketController extends AppCompatActivity {
 
         placeOrder = (Button) findViewById(R.id.placeOrderButton);
 
-        subtotalTextBox.setText("$" +moneyFormat.format(subtotal) + "");
+        subtotalTextBox.setText("$" + moneyFormat.format(subtotal) + "");
 
         salesTax = subtotal * TAX_AMOUNT;
         total = subtotal + salesTax;
 
         totalTextBox.setText("$" + moneyFormat.format(total) + "");
-        taxTextbox.setText("$" +moneyFormat.format(salesTax) + "");
+        taxTextbox.setText("$" + moneyFormat.format(salesTax) + "");
 
 
         orderList.setAdapter(adapter);
@@ -86,11 +84,12 @@ public class basketController extends AppCompatActivity {
                         salesTax = subtotal * TAX_AMOUNT;
                         total = subtotal + salesTax;
 
-                        subtotalTextBox.setText("$" +moneyFormat.format(subtotal) + "");
+                        subtotalTextBox.setText("$" + moneyFormat.format(subtotal) + "");
                         totalTextBox.setText("$" + moneyFormat.format(total) + "");
-                        taxTextbox.setText("$" +moneyFormat.format(salesTax) + "");
+                        taxTextbox.setText("$" + moneyFormat.format(salesTax) + "");
 
                         adapter.notifyDataSetChanged();
+
 
 
                     }
@@ -99,14 +98,35 @@ public class basketController extends AppCompatActivity {
             }
         });
 
-    placeOrder.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+        placeOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder adb = new AlertDialog.Builder(basketController.this);
+                adb.setTitle("Order?");
+                adb.setMessage("Are you sure you want to order?");
+                adb.setNegativeButton("Cancel", null);
+                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        ArrayList<String>temp = new ArrayList<>();
+                        for(int i=0;i<order.size();i++){
+                            temp.add(order.get(i));
+                        }
+                        StoreOrderList.add(temp);
+                        total_amount.add(total);
+                        subtotal = 0;
+                        salesTax = 0;
+                        total = 0;
 
-        }
-    });
-
-
+                        subtotalTextBox.setText("$" + moneyFormat.format(subtotal) + "");
+                        totalTextBox.setText("$" + moneyFormat.format(total) + "");
+                        taxTextbox.setText("$" + moneyFormat.format(salesTax) + "");
+                        order.clear();
+                        adapter.notifyDataSetChanged();
+                        Toast.makeText(getApplicationContext(), "Order has been added to the store.", Toast.LENGTH_LONG).show();
+                    }
+                });
+                adb.show();
+            }
+        });
     }
-
 }
