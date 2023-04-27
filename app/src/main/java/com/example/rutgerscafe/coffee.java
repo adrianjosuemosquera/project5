@@ -1,11 +1,20 @@
 package com.example.rutgerscafe;
-
+/**
+ * creates coffee object
+ * @author Zhenglin Li, Adrian Mosquera
+ */
 public class coffee {
 
     public static double price = 0;
     public static String cupSize;
     public static String addIns;
 
+    /**
+     * constructor of coffee
+     * @param cupSize of coffee
+     * @param addIns in coffee like syrups
+     * @param price price of coffee
+     */
     public coffee(String cupSize, String addIns, double price) {
 
         this.cupSize = cupSize;
@@ -60,6 +69,10 @@ public class coffee {
         this.price = price;
     }
 
+    /**
+     * how coffee object prints
+     * @return string of coffee
+     */
     @Override
     public String toString() {
         return getCupSize() + " " + getAddIns() + " " + " Coffee";

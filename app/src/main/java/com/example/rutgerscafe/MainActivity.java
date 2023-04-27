@@ -8,9 +8,20 @@ import android.widget.TextView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+/**
+ * main activty page of app
+ * @author Zhenglin Li, Adrian Mosquera
+ */
 public class MainActivity extends AppCompatActivity{
     Button coffeeButton, checkCartButton, donutButton, storeOrderButton;
+
+    /**
+     * everything initialized on opening of app
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +32,10 @@ public class MainActivity extends AppCompatActivity{
         storeOrderButton = (Button) findViewById(R.id.storeOrderButton);
 
         coffeeButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * opens coffee activity
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), coffeeController.class);
@@ -28,6 +43,10 @@ public class MainActivity extends AppCompatActivity{
             }
         });
         checkCartButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * opens cart activity
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), basketController.class);
@@ -36,6 +55,10 @@ public class MainActivity extends AppCompatActivity{
         });
 
         donutButton.setOnClickListener(new View.OnClickListener(){
+            /**
+             * opens donut activity
+             * @param V The view that was clicked.
+             */
             @Override
             public void onClick(View V) {
                 Intent i = new Intent(getApplicationContext(), DonutController.class);
@@ -43,6 +66,10 @@ public class MainActivity extends AppCompatActivity{
             }
         });
         storeOrderButton.setOnClickListener(new View.OnClickListener(){
+            /**
+             * opens store orders activity
+             * @param V The view that was clicked.
+             */
             @Override
             public void onClick(View V) {
                 Intent i = new Intent(getApplicationContext(), StoreOrderController.class);

@@ -19,7 +19,10 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
-
+/**
+ * controllers coffee activity
+ * @author Zhenglin Li, Adrian Mosquera
+ */
 public class coffeeController extends AppCompatActivity {
 
     String Mocha = "Mocha";
@@ -35,6 +38,14 @@ public class coffeeController extends AppCompatActivity {
 
     Button addToOrder;
     EditText price;
+
+    /**
+     * what happens when activity is created
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coffee_view);
@@ -55,6 +66,7 @@ public class coffeeController extends AppCompatActivity {
 
         irishCream.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             /**
+             * when irish cream check box is clicked
              * @param buttonView The compound button view whose state has changed.
              * @param isChecked  The new checked state of buttonView.
              */
@@ -82,6 +94,7 @@ public class coffeeController extends AppCompatActivity {
 
         frenchVanilla.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             /**
+             * when french vanilla checkbox is clicked
              * @param buttonView The compound button view whose state has changed.
              * @param isChecked  The new checked state of buttonView.
              */
@@ -109,6 +122,7 @@ public class coffeeController extends AppCompatActivity {
 
         caramel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             /**
+             * when caramel checkbox is clicked
              * @param buttonView The compound button view whose state has changed.
              * @param isChecked  The new checked state of buttonView.
              */
@@ -136,6 +150,7 @@ public class coffeeController extends AppCompatActivity {
 
         sweetCream.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             /**
+             * when sweet cream checkbox is clicked
              * @param buttonView The compound button view whose state has changed.
              * @param isChecked  The new checked state of buttonView.
              */
@@ -163,6 +178,7 @@ public class coffeeController extends AppCompatActivity {
 
         mocha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             /**
+             * when mocha is checked
              * @param buttonView The compound button view whose state has changed.
              * @param isChecked  The new checked state of buttonView.
              */
@@ -190,6 +206,11 @@ public class coffeeController extends AppCompatActivity {
         });
 
         tall.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            /**
+             * when tall radio button is selected as coffee size
+             * @param buttonView The compound button view whose state has changed.
+             * @param isChecked  The new checked state of buttonView.
+             */
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
@@ -215,6 +236,11 @@ public class coffeeController extends AppCompatActivity {
             }
         });
         grande.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            /**
+             * when grande radio button is selected as coffee size
+             * @param buttonView The compound button view whose state has changed.
+             * @param isChecked  The new checked state of buttonView.
+             */
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
@@ -241,6 +267,11 @@ public class coffeeController extends AppCompatActivity {
             }
         });
         venti.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            /**
+             * when venti radio button is selected as coffee size
+             * @param buttonView The compound button view whose state has changed.
+             * @param isChecked  The new checked state of buttonView.
+             */
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -266,6 +297,11 @@ public class coffeeController extends AppCompatActivity {
         });
 
         addToOrder.setOnClickListener(new View.OnClickListener() {
+            /**
+             * when add to order buttton is clicked
+             * resets everything on activty, adds coffee price to cart total.
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
 

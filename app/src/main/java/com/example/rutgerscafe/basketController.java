@@ -19,7 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-
+/**
+ * controls basket view activity
+ * @author Zhenglin Li, Adrian Mosquera
+ */
 public class basketController extends AppCompatActivity {
 
     public static double subtotal = 0;
@@ -39,6 +42,13 @@ public class basketController extends AppCompatActivity {
 
     public static ArrayList<String> order = new ArrayList<>();
 
+    /**
+     * Stuff done on new instance of activity.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.basket_view);
@@ -63,7 +73,17 @@ public class basketController extends AppCompatActivity {
 
         orderList.setAdapter(adapter);
 
+
         orderList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            /**
+             * Pops up alert dialog giving the
+             * option to delete an item or not.
+             * @param parent The AdapterView where the click happened.
+             * @param view The view within the AdapterView that was clicked (this
+             *            will be a view provided by the adapter)
+             * @param position The position of the view in the adapter.
+             * @param id The row id of the item that was clicked.
+             */
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AlertDialog.Builder adb = new AlertDialog.Builder(basketController.this);
@@ -72,6 +92,14 @@ public class basketController extends AppCompatActivity {
                 final int positionToRemove = position;
                 adb.setNegativeButton("Cancel", null);
                 adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    /**
+                     * Deletes item from list view, and subtracts cost from total.
+                     * Adjusts total and tax sales.
+                     * @param dialog the dialog that received the click
+                     * @param which the button that was clicked (ex.
+                     *              {@link DialogInterface#BUTTON_POSITIVE}) or the position
+                     *              of the item clicked
+                     */
                     public void onClick(DialogInterface dialog, int which) {
                         String removedItem = order.get(positionToRemove);
                         order.remove(positionToRemove);
@@ -99,6 +127,10 @@ public class basketController extends AppCompatActivity {
         });
 
         placeOrder.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Pops alert when you press Order button.
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder adb = new AlertDialog.Builder(basketController.this);
@@ -106,6 +138,14 @@ public class basketController extends AppCompatActivity {
                 adb.setMessage("Are you sure you want to order?");
                 adb.setNegativeButton("Cancel", null);
                 adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    /**
+                     * resets everything in order listview and pushes data to temp array to store
+                     * in store orders.
+                     * @param dialog the dialog that received the click
+                     * @param which the button that was clicked (ex.
+                     *              {@link DialogInterface#BUTTON_POSITIVE}) or the position
+                     *              of the item clicked
+                     */
                     public void onClick(DialogInterface dialog, int which) {
                         ArrayList<String>temp = new ArrayList<>();
                         for(int i=0;i<order.size();i++){

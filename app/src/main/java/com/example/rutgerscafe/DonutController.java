@@ -12,12 +12,23 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import java.text.DecimalFormat;
 
+/**
+ * controls donut activity
+ * @author Zhenglin Li, Adrian Mosquera
+ */
 public class DonutController extends AppCompatActivity {
     private static final double hole_price = 0.39, cake_price = 1.79, yeast_price = 1.59;
     private String type, flavor, quantity;
     private Spinner donut_type, donut_flavor, donut_quantity;
     private TextView donut_subtotal;
 
+    /**
+     * everything initialized at start of donut activity
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +37,9 @@ public class DonutController extends AppCompatActivity {
         getValues();
     }
 
+    /**
+     * adds items to array adapter
+     */
     public void addItems(){
         donut_type = findViewById(R.id.donut_type);
         donut_flavor = findViewById(R.id.donut_flavor);
@@ -42,32 +56,77 @@ public class DonutController extends AppCompatActivity {
         donut_flavor.setAdapter(adapter_flavor);
         donut_quantity.setAdapter(adapter_quantity);
     }
+
+    /**
+     * gets values of selected items
+     */
     private void getValues(){
         donut_type.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { //event handler below
+            /**
+             * sets type of donut to item selected
+             * @param adapterView The AdapterView where the selection happened
+             * @param view The view within the AdapterView that was clicked
+             * @param i The position of the view in the adapter
+             * @param l The row id of the item that is selected
+             */
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 type = adapterView.getSelectedItem().toString();
             }
+
+            /**
+             * handles nothing selected exception
+             * @param adapterView The AdapterView that now contains no selected item.
+             */
             @Override
             public void onNothingSelected(AdapterView<?> adapterView){ }
         });
         donut_flavor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { //event handler below
+            /**
+             * sets flavor of donut to item selected
+             * @param adapterView The AdapterView where the selection happened
+             * @param view The view within the AdapterView that was clicked
+             * @param i The position of the view in the adapter
+             * @param l The row id of the item that is selected
+             */
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 flavor = adapterView.getSelectedItem().toString();
             }
+
+            /**
+             * handles nothing selected exception
+             * @param adapterView The AdapterView that now contains no selected item.
+             */
             @Override
             public void onNothingSelected(AdapterView<?> adapterView){ }
         });
         donut_quantity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { //event handler below
+            /**
+             * sets quanity of donut to item selected
+             * @param adapterView The AdapterView where the selection happened
+             * @param view The view within the AdapterView that was clicked
+             * @param i The position of the view in the adapter
+             * @param l The row id of the item that is selected
+             */
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 quantity = adapterView.getSelectedItem().toString();
             }
+
+            /**
+             * handles nothing selected exception
+             * @param adapterView The AdapterView that now contains no selected item.
+             */
             @Override
             public void onNothingSelected(AdapterView<?> adapterView){ }
         });
     }
+
+    /**
+     * adds price of donuts selected to subtotal
+     * @return price of donuts
+     */
     private double getPrice(){
         double price = 0.0;
         if(flavor.compareTo(" ")!=0 && type.compareTo(" ")!=0 && quantity.compareTo(" ")!=0){
@@ -90,6 +149,10 @@ public class DonutController extends AppCompatActivity {
         return price;
     }
 
+    /**
+     *
+     * @return donut quantity
+     */
     private int getDonutQuant(){
         String quant = quantity;
         int num = 0;
@@ -112,6 +175,10 @@ public class DonutController extends AppCompatActivity {
         return num;
     }
 
+    /**
+     * sets donut subtotal text box
+     * @param view
+     */
     public void setDonutSubtotal(View view){
         addItems();
         getValues();
@@ -141,6 +208,11 @@ public class DonutController extends AppCompatActivity {
         order.add(quantity + " " + flavor + " " + type + " $" + subtotal);
     }
 
+    /**
+     * provides alert dialog for exception handling
+     * @param title name of alert
+     * @param msg what we need to communicate
+     */
     private void alert(String title, String msg){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle(title)
